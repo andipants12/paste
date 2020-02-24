@@ -53,6 +53,20 @@ jobs:
           name: Run tests
           command: yarn test
 
+  chroma:
+    executor: job-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v3-dependencies-{{ checksum "yarn.lock" }}
+            - v3-dependencies-
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Publish Storybook Chroma
+          command: yarn chroma
+
   applitools:
     executor: job-executor
     steps:
@@ -89,6 +103,9 @@ workflows:
       - test:
           requires:
             - build
+      - chroma:
+          requires:
+            - build
       - prettier:
           requires:
             - build
@@ -96,3 +113,4 @@ workflows:
       - applitools:
           requires:
             - prettier
+            - chroma

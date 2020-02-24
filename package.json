@@ -44,7 +44,8 @@
     "prettier-clean": "prettier --write '{.storybook,packages}/**/*.{ts,tsx}'",
     "props-gen": "lerna run props-gen",
     "lint": "yarn pre-test && eslint --ext .tsx,.ts ./packages/**",
-    "type-check": "lerna run type-check"
+    "type-check": "lerna run type-check",
+    "chroma": "chroma"
   },
   "dependencies": {
     "@emotion/core": "^10.0.15",
@@ -124,6 +125,7 @@
     "react-test-renderer": "^16.8.6",
     "require-context.macro": "^1.0.4",
     "shelljs": "^0.8.3",
+    "storybook-chroma": "^3.5.2",
     "storybook-readme": "^5.0.5",
     "typedoc": "^0.16.9",
     "typescript": "^3.5.2",
